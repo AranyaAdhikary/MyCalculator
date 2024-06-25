@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCalculator</title>
+<style>
+    body{
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.buttonsContainer{
+    height: 500px;
+    /* width: 20%; */
+    background-color: rgb(6, 6, 6);
+    /*margin-left: 40%;
+    margin-top: 7%;*/
+    border-radius: 10px;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 200px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1600px){
+  .buttonsContainer{
+      width: 25%;
+  }
+}
+
+@media (max-width: 1200px){
+  .buttonsContainer{
+      width: 35%;
+  }
+}
+
+@media (max-width: 820px){
+  .buttonsContainer{
+      width: 50%;
+  }
+}
+
+@media (max-width: 600px){
+  .buttonsContainer{
+      width: 60%;
+  }
+}
+
+@media (max-width: 480px){
+  .buttonsContainer{
+      width: 80%;
+  }
+}
+
+.calcContent{
+    height: 450px;
+    width: 90%;
+    background-color: rgb(119, 116, 116);
+    margin-top: 7%;
+    margin-left: 5%;
+    border-radius: 10px;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.displayResult{
+    height: 85px;
+    width: 93.4%;
+    border-style: solid;
+    background-color: rgb(42, 41, 41);
+    color: rgb(250, 252, 254);
+    font-size: large;
+    padding-left: 5%;
+    border-radius: 10px;
+    border-width: 1px;
+}
+
+.buttonContent{
+    height: 340px;
+    width: 90%;
+    background-color: rgb(119, 116, 116);
+    margin-left: 5%;
+    margin-top: 5%;
+    border-radius: 10px;
+}
+
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #090909;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #f2f2f5;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 20px;
+  height: 60px;
+  width: 23.7%;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-20 {
+    align-items: center;
+    appearance: none;
+    background-color: #353535;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #f2f2f5;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 20px;
+    height: 60px;
+    width: 23.7%;
+  }
+  
+  .button-20:focus {
+    box-shadow: #e3e3eb 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  }
+  
+  .button-20:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  .button-20:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+  
+.button-10 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 14px;
+  font-family: sans-serif;
+  border-radius: 6px;
+  border: none;
+  width: 100%;
+
+  color: #1a1919;
+  background: linear-gradient(180deg, #d0d1d4 0%, #333131 100%);
+   background-origin: border-box;
+  box-shadow: 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  font-size: larger;
+}
+
+.button-10:focus {
+  box-shadow: inset 0px 0.8px 0px -0.25px rgba(255, 255, 255, 0.2), 0px 0.5px 1.5px rgba(54, 122, 246, 0.25), 0px 0px 0px 3.5px rgba(58, 108, 217, 0.5);
+  outline: 0;
+}
+</style>
+</head>
+<body>
+   
+    <div class="buttonsContainer">
+        <div class="calcContent">
+        <input type="text" class="displayResult" sname="displayResult" id="displayResult" class="displayResult" value="0">
+        <br>
+        <div class="buttonContent">
+        <!-- row 1 -->
+        <button class="button-30" onclick="insertValue('9')">9</button>
+        <button class="button-30" onclick="insertValue('8')">8</button>
+        <button class="button-30" onclick="insertValue('7')">7</button>
+        <button class="button-20" onclick="insertValue('+')">+</button>
+        <br>
+        <!-- row 2 -->
+        <button class="button-30" onclick="insertValue('6')">6</button>
+        <button class="button-30" onclick="insertValue('5')">5</button>
+        <button class="button-30" onclick="insertValue('4')">4</button>
+        <button class="button-20" onclick="insertValue('-')">-</button>
+        <br>
+        <!-- row 3 -->
+        <button class="button-30" onclick="insertValue('3')">3</button>
+        <button class="button-30" onclick="insertValue('2')">2</button>
+        <button class="button-30" onclick="insertValue('1')">1</button>
+        <button class="button-20" onclick="insertValue('*')">*</button>
+        <br>
+        <!-- row 4 -->
+        <button class="button-30" onclick="insertValue('.')">.</button>
+        <button class="button-30" onclick="insertValue('0')">0</button>
+        <button class="button-30" onclick="backspace('')"><</button>
+        <button class="button-20" onclick="insertValue('/')">/</button>
+        <br>
+        <!-- row 5 -->
+        <button class="button-20" onclick="insertValue('(')">(</button>
+        <button class="button-20" onclick="insertValue(')')">)</button>
+        <button class="button-20" onclick="insertValue('%')">%</button>
+        <button class="button-20" onclick="allClear()">AC</button>
+        <br>
+        <!-- row 6 -->
+        <button class="button-10" onclick="calculate()">Calculate</button>
+        </div>
+    </div>
+   </div>
+</body>
+<script>
+    function insertValue(content){
+
+var OriginalContent = document.getElementById ('displayResult').value;
+var lastCharacter = OriginalContent.slice(OriginalContent.length-1,OriginalContent.length)
+/* slice(OriginalContent.length-1,OriginalContent.length) means only the last character */
+if(OriginalContent=='Error'){
+    document.getElementById('displayResult').value = '0';
+}
+
+/* Test Case 1: If the value is Zero. then 0will be replaced by New Content*/
+if(document.getElementById ('displayResult').value== '0' && content=='.'){
+    document.getElementById('displayResult').value += content;
+}
+else if(document.getElementById ('displayResult').value== '0'){
+    document.getElementById('displayResult').value = content;
+}
+/* Test Case 2: If we add same operator multiple times then it will not be updated */
+else if(lastCharacter=='+' && content=='+'){
+    document.getElementById('displayResult').value += '';
+}
+else if(lastCharacter=='-' && content=='-'){
+    document.getElementById('displayResult').value += '';
+}
+else if(lastCharacter=='' && content==''){
+    document.getElementById('displayResult').value += '';
+}
+else if(lastCharacter=='/' && content=='/'){
+    document.getElementById('displayResult').value += '';
+}
+else if(lastCharacter=='%' && content=='%'){
+    document.getElementById('displayResult').value += '';
+}
+else if(lastCharacter=='.' && content=='.'){
+    document.getElementById('displayResult').value += '';
+}
+    /*
+        Example:
+        748+- => 748-
+        1. RemoveLast Character        (+)
+        2. Add New Character (Content) (-)
+    */
+else if(lastCharacter=='+' && (content=='-' ||content=='*' ||content=='/' ||content=='%')){
+        // Replace Last Character by Content
+    OriginalContent = OriginalContent.slice(0,OriginalContent.length-1) + content;
+    document.getElementById('displayResult').value = OriginalContent;
+}
+else if(lastCharacter=='-' && (content=='+' ||content=='*' ||content=='/' ||content=='%')){
+        // Replace Last Character by Content
+    OriginalContent = OriginalContent.slice(0,OriginalContent.length-1) + content;
+    document.getElementById('displayResult').value = OriginalContent;
+}
+else if(lastCharacter=='*' && (content=='+' ||content=='-' ||content=='/' ||content=='%')){
+        // Replace Last Character by Content
+    OriginalContent = OriginalContent.slice(0,OriginalContent.length-1) + content;
+    document.getElementById('displayResult').value = OriginalContent;
+}
+else if(lastCharacter=='/' && (content=='+' ||content=='-' ||content=='*' ||content=='%')){
+        // Replace Last Character by Content
+    OriginalContent = OriginalContent.slice(0,OriginalContent.length-1) + content;
+    document.getElementById('displayResult').value = OriginalContent;
+}
+else if(lastCharacter=='%' && (content=='+' ||content=='-' ||content=='*' ||content=='/')){
+        // Replace Last Character by Content
+    OriginalContent = OriginalContent.slice(0,OriginalContent.length-1) + content;
+    document.getElementById('displayResult').value = OriginalContent;
+}
+else{
+    document.getElementById('displayResult').value += content;
+}
+
+}
+
+function backspace(){
+    /* Pick the Original Content */
+    var OriginalContent = document.getElementById ('displayResult').value;
+    /* Remove Last Character */
+    OriginalContent = OriginalContent.slice(0,OriginalContent.length-1);
+    /* Place at Original Position */
+    document.getElementById('displayResult').value = OriginalContent;
+    if(document.getElementById('displayResult').value.length==0){
+        document.getElementById('displayResult').value=0;
+    }
+}
+
+function allClear(){
+    document.getElementById('displayResult').value = '0';
+}
+
+function calculate(){
+    /* Pick the Original Content */
+    var OriginalContent = document.getElementById ('displayResult').value;
+    try{
+        document.getElementById('displayResult').value = eval(OriginalContent);
+    } catch (error){
+        document.getElementById('displayResult').value = 'Error';
+    }
+}
+</script>
+</html>
